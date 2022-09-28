@@ -1,5 +1,5 @@
 from pytube import YouTube as yt
-i
+from pytube import Search
 from flask import Flask, render_template, request
 
 app=Flask(__name__)
@@ -8,4 +8,6 @@ app=Flask(__name__)
 def indek():
     return render_template("index.html")
 
-@app.route("")
+def ss(url):
+    yu = Search(url)
+    [i.title for i in yu]
