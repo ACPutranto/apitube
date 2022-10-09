@@ -22,16 +22,14 @@ class ytvids(Resource):
             yu = yt(url)
             res=[]
             name = yu.title.replace(" ", "").replace(",","").replace("'","")
-            [res.append(i) for i in yu.streams.filter(progressive=True)]
+            [res.append(i) for i in yu.streams.get_highest_resolution()]
             if len(res) == 2:
                 result = {
                     "status":True,
                     "title":name,
                     "msg":"berhasil",
                     "video-sound": {
-                                    "144p":res[0].url+"&title="+name,
-                                    "360p":res[1].url+"&title="+name,
-                                    "720p":res[2].irl+"&title="+name
+                                    "480p":res[0].url+"&title="+name
                                     }
                             }
             else:
